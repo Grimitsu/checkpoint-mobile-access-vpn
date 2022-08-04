@@ -143,6 +143,16 @@ If you end up with an error when you're trying to run `/usr/bin/cshell/launcher`
 $ sudo rm /tmp/cshell.fifo
 ```
 
+In some cases after installing all the scripts launcher won't start properly, giving the following output:
+
+```
+/usr/bin/cshell$ ./launcher
+LAUNCHER> Starting CShell...
+LAUNCHER> CShell NOT Started
+```
+
+In that case, when you try to connect via checkpoint on a web page it won't detect `check point mobile agent` and offer to install it again using `CShell.sh`. Though, what may help, for some reason, opening https://localhost:14186/id (it will warn about non-private connection, visit the page anyway). After that try re-connecting from checkpoint page, SSL extender should work properly. 
+
 ## Post-install
 
 You need to disable one of your system's startup applications. You should be able to see one of them called `cshell` with a marked checkbox. All it does is running the `launcher` executable file in `/usr/bin/cshell/`. You must uncheck it because every time you let it run automatically it's going to be run as `sudo`, which means it's going to get stuck.
